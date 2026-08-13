@@ -1,0 +1,4 @@
+Hello Python
+I am learning files
+This is a text file
+New line added
