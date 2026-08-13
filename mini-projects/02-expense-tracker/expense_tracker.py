@@ -1,7 +1,8 @@
+import json
 from datetime import date
 
-# Store expenses in a list
-expenses = []
+# File to store expense data
+FILE_NAME = "expenses.json"
 
 # Function to add a new expense
 def add_expense(expenses_list, amount, category, expense_date):
@@ -26,9 +27,26 @@ def list_expenses(expenses_list):
 def calculate_total(expenses_list):
     return sum(item["amount"] for item in expenses_list)
 
+# Function to save data to JSON file
+def save_expenses(expenses_list, filename=FILE_NAME):
+    with open(filename, "w") as file:
+        json.dump(expenses_list, file, indent=4)
+    print("Expenses saved to file.")
+
+# Function to load saved data at startup
+def load_expenses(filename=FILE_NAME):
+    try:
+        with open(filename, "r") as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return []
+
 if __name__ == "__main__":
-    # Test core functionality
+    # Load existing data on startup
+    expenses = load_expenses()
+    
+    # Add an item and save
     add_expense(expenses, 15.50, "Food", str(date.today()))
-    add_expense(expenses, 45.00, "Transport", str(date.today()))
     list_expenses(expenses)
     print("Total Spent:", calculate_total(expenses))
+    save_expenses(expenses)
