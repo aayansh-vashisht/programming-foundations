@@ -37,7 +37,7 @@ A CLI-based contact management application built in Python that enables users to
 
 1. Navigate to the project directory:
    ```bash
-   cd mini-projects/06-Contact-Manager
+   cd mini-projects/05-Contact-Manager
    ```
 
 2. Run the application:
