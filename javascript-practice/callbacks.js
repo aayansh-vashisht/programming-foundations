@@ -1,15 +1,11 @@
-function processUserInput(name, callback) {
-    console.log(`Processing data for ${name}...`);
-    // Execute the passed-in function
-    callback(name);
+function fetchUserData(userId, callback) {
+    setTimeout(() => {
+        console.log("Data retrieved from server");
+        callback({ id: userId, username: "alex99" });
+    }, 1000);
 }
 
-const welcomeMessage = (user) => {
-    console.log(`Welcome aboard, ${user}!`);
-};
-
-// Passing welcomeMessage as an argument (without parentheses!)
-processUserInput("Maya", welcomeMessage);
-// Output:
-// "Processing data for Maya..."
-// "Welcome aboard, Maya!"
+// Passing an inline callback function
+fetchUserData(101, (user) => {
+    console.log(`Welcome back, ${user.username}!`);
+});
